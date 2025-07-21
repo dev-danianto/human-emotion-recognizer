@@ -1,5 +1,5 @@
 streamlit
-opencv-python
+opencv-python-headless
 numpy
-tensorflow
-keras
+tensorflow==2.14.0
+keras==2.14.0
