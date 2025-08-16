@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Recognition</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .upload-form {
+            margin-bottom: 20px;
+        }
+        .images {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .img-container {
+            text-align: center;
+        }
+        img {
+            max-width: 300px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+        }
+        .error {
+            color: red;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Emotion Recognition from Image</h1>
+        <form class="upload-form" action="/" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+            <button type="submit">Upload and Predict</button>
+        </form>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        {% if processed_image %}
+            <div class="images">
+                <div class="img-container">
+                    <h2>Original Image</h2>
+                    <img src="{{ url_for('uploaded_file', filename=uploaded_image) }}" alt="Uploaded Image">
+                </div>
+                <div class="img-container">
+                    <h2>Processed Image</h2>
+                    <img src="{{ url_for('uploaded_file', filename=processed_image) }}" alt="Processed Image">
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
